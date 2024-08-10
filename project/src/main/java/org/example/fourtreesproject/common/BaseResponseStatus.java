@@ -200,7 +200,6 @@ public enum BaseResponseStatus {
     GROUPBUY_LIST_EMPTY(true, 4402, "현재 진행중인 공구가 없습니다."),
     GROUPBUY_LIST_REGISTERD_BID_EMPTY(true, 4403, "현재 등록된 입찰이 없습니다."),
     GROUPBUY_EMPTY(false, 4404, "없는 공구입니다."),
-    GROUPBUY_LIST_WAIT_EMPTY(false,4405,"현재 대기중인 공구가 없습니다"),
 
     // 관심 공구 4500
     // 관심 공구 등록/취소 실패

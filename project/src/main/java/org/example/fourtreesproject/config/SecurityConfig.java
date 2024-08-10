@@ -48,7 +48,7 @@ public class SecurityConfig {
         config.addAllowedOrigin("http://192.168.0.119:3000"); // 허용할 출처
         config.addAllowedOrigin("http://localhost:8080"); // 허용할 출처
         config.addAllowedOrigin("http://192.168.0.119:8080"); // 허용할 출처
-        config.addAllowedOriginPattern("*"); // 허용할 출처
+        config.addAllowedOrigin("*"); // 허용할 출처
         config.addAllowedMethod("*"); // 허용할 메서드 (GET, POST, PUT 등)
         config.addAllowedHeader("*"); // 허용할 헤더
         config.setAllowCredentials(true); // 자격 증명 허용
@@ -75,16 +75,14 @@ public class SecurityConfig {
                 auth
                         .requestMatchers(
                                 "/user/signup", "/user/login", "/user/verify",
-                                "/seller/signup", "/coupon/register", "/company-reg/verify",
-                                "/gpbuy/search", "/gpbuy/list", "/gpbuy/detail").permitAll() // 모든 사람 접속 가능
+                                "/seller/signup", "/coupon/register", "/company-reg/verify").permitAll() // 모든 사람 접속 가능
                         .requestMatchers("/user/delivery/", "/user/info/detail").hasRole("USER")
                         .requestMatchers("/seller/info/detail").hasRole("SELLER")
                         .requestMatchers("/company/**").hasRole("SELLER")
                         .requestMatchers("/product/**").hasRole("SELLER")
+                        .requestMatchers("/gpbuy/**").hasRole("USER")
                         .requestMatchers("/bid/**").hasRole("SELLER")
                         .requestMatchers("/orders/**").hasRole("USER")
-                        .requestMatchers("/gpbuy/register", "/gpbuy/registered/bid/list"
-                        , "/gpbuy/likes/save", "/gpbuy/likes/list", "gpbuy/cancle").hasRole("USER")
                         .requestMatchers("/v2/api-dosc", "/swagger-resources/**", "/swagger-ui.html","/webjars/**","/swagger-ui/**" ).permitAll()
                         .anyRequest().permitAll()
         );

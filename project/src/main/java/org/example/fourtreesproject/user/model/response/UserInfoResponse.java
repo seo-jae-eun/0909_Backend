@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 public class UserInfoResponse {
     private String name;
-//    private String password;
+    private String password;
     private LocalDate birth;
     private String email;
     private String sex;
