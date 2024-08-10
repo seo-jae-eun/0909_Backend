@@ -1,0 +1,21 @@
+name: devops test
+
+on:
+  push:
+    branches: [ main ]
+    
+jobs:
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: get code from github
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.REMOTE_PORT }}
+        script: |
+          echo test > /tmp/abcd
